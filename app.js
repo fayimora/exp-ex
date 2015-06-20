@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var oauthserver = require('oauth2-server');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -17,6 +16,7 @@ app.oauth = oauthserver({
   debug: true
 });
 
+var users = require('./routes/users')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
